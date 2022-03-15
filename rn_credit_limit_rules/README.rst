@@ -6,4 +6,9 @@
 Odoo 14 - Credit Limit Rules
 ==================================
 
+.. image:: static/description/icon.png
+  :width: 10%
+  :alt: Module Icon
+  :align: right
+
 Module for Odoo that implements a credit limit control, based on rules of credit amount or number of expired documents
