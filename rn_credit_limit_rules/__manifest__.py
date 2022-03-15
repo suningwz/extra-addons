@@ -15,6 +15,7 @@
         'views/credit_limit_rules.xml',
         'views/res_partner.xml',
         'views/sale_order.xml',
+        'views/account_move.xml',
     ],
     'installable': True,
 }
