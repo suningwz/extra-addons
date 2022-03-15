@@ -15,11 +15,10 @@ class CreditLimitRule(models.Model):
         ('documents', 'Documents')
     ], string='Credit Rule Type', default='amount')
 
-    currency_id = fields.Many2one('res.currency', string='Currency', store=True, help="Rule currency.")
     company_id = fields.Many2one(comodel_name='res.company', string='Company',
                                  store=True, readonly=True,
                                  default=lambda self: self.env.user.company_id )
-    company_currency_id = fields.Many2one(string='Company Currency', readonly=True,
+    currency_id = fields.Many2one(string='Currency', readonly=True,
         related='company_id.currency_id')
 
     credit_limit = fields.Monetary(string='Amount Credit Limit', store=True)

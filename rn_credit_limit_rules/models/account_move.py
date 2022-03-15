@@ -16,7 +16,13 @@ class AccountMove(models.Model):
                 if rules:
                     limite = []
                     overdue_docs = []
-                    doc = self.env['account.move'].sudo().search([('move_type', '=', 'out_invoice'), ('amount_residual', '>=', 0)])
+                    invoices = self.env['account.move'].sudo().search([
+                        # Facturas y Notas de Crédito
+                        ('move_type', 'in', ['out_invoice', 'out_refund']),
+                        # Donde el monto adeudado sea distinto a 0
+                        ('amount_residual_signed', '<>', 0.0),
+                        # Documento esté publicado
+                        ('state', '=', 'posted')])
                     for rule in rules:
                         if rule.type == 'amount':
                             limite.append(rule.credit_limit)
@@ -25,12 +31,18 @@ class AccountMove(models.Model):
                     if len(overdue_docs) > 0:
                         overdue_docs.sort()
                         minimo_doc = overdue_docs[0]
-                        if len(doc) > minimo_doc:
+                        if len(invoices) > minimo_doc:
                             credit_limit_warning = True
                     if len(limite) > 0:
                         limite.sort()
                         limite_credito = limite[0]
-                        if record.amount_total > limite_credito:
+                        amount_doc = self.amount_residual_signed
+
+                        # Sumo el monto de las facturas
+                        for inv in invoices:
+                            amount_doc += inv.amount_residual_signed
+
+                        if amount_doc > limite_credito:
                             credit_limit_warning = True
                 else:
                     credit_limit_warning = False
@@ -44,7 +56,13 @@ class AccountMove(models.Model):
             if rules:
                 limite = []
                 overdue_docs = []
-                doc = self.env['account.move'].sudo().search([('move_type', '=', 'out_invoice'), ('amount_residual', '>=', 0)])
+                invoices = self.env['account.move'].sudo().search([
+                        # Facturas y Notas de Crédito
+                        ('move_type', 'in', ['out_invoice', 'out_refund']),
+                        # Donde el monto adeudado sea distinto a 0
+                        ('amount_residual_signed', '<>', 0.0),
+                        # Documento esté publicado
+                        ('state', '=', 'posted')])
                 for rule in rules:
                     if rule.type == 'amount':
                         limite.append(rule.credit_limit)
@@ -53,12 +71,18 @@ class AccountMove(models.Model):
                 if len(overdue_docs) > 0:
                     overdue_docs.sort()
                     minimo_doc = overdue_docs[0]
-                    if len(doc) > minimo_doc:
+                    if len(invoices) > minimo_doc:
                         raise ValidationError(_('The partner has a credit limit rule based on the number of unpaid documents!'))
                     return super().action_post()
                 if len(limite) > 0:
                     limite.sort()
                     limite_credito = limite[0]
-                    if self.amount_total > limite_credito:
+                    amount_doc = self.amount_residual_signed
+
+                    # Sumo el monto de las facturas
+                    for inv in invoices:
+                        amount_doc += inv.amount_residual_signed
+
+                    if amount_doc > limite_credito:
                         raise ValidationError(_('The customer has a credit limit rule that is being exceeded by this document!'))
         return super().action_post()
