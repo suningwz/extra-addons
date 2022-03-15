@@ -7,7 +7,10 @@
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
-                <field name="credit_limit_warning" invisible="0"/>
+                <field name="credit_limit_warning" invisible="1"/>
+                <div class="alert alert-warning mb-0" role="alert" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'sent']), ('credit_limit_warning', '=', False)]}">
+                    This customer has exceeded a credit limit rule.<br/>
+                </div>
             </xpath>
         </field>
     </record>
