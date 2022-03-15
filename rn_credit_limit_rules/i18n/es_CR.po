@@ -1,0 +1,403 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rn_credit_limit_rules
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220204\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-03-15 04:15+0000\n"
+"PO-Revision-Date: 2022-03-15 04:15+0000\n"
+"Last-Translator: Norlan Ruiz<ruiznorlan@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__access_warning
+msgid "Access warning"
+msgstr "Advertencia de acceso"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_needaction
+msgid "Action Needed"
+msgstr "Accion necesaria"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de excepción de actividad"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields.selection,name:rn_credit_limit_rules.selection__credit_limit_rule__type__amount
+msgid "Amount"
+msgstr "Cantidad"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__credit_limit
+msgid "Amount Credit Limit"
+msgstr "Importe Límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: rn_credit_limit_rules
+#: model:ir.ui.menu,name:rn_credit_limit_rules.menu_credit_limit
+msgid "Credit Limit"
+msgstr "Límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model,name:rn_credit_limit_rules.model_credit_limit_rule
+msgid "Credit Limit Rule"
+msgstr "Regla de límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.actions.act_window,name:rn_credit_limit_rules.credit_limit_rule_tree_action
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner__credit_limit_rules_ids
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_users__credit_limit_rules_ids
+#: model:ir.ui.menu,name:rn_credit_limit_rules.menu_cred_limit_rules
+#: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.credit_limit_rule_view_form
+#: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.credit_limit_rule_view_tree
+msgid "Credit Limit Rules"
+msgstr "Reglas de límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__name
+msgid "Credit Limit Rules Name"
+msgstr "Nombre de reglas de límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_bank_statement_line__credit_limit_warning
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_move__credit_limit_warning
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_payment__credit_limit_warning
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_sale_order__credit_limit_warning
+msgid "Credit Limit Warning"
+msgstr "Advertencia de límite de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__type
+msgid "Credit Rule Type"
+msgstr "Tipo de regla de crédito"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__access_url
+msgid "Customer Portal URL"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_move__display_name
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__display_name
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner__display_name
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__doc_limit
+msgid "Document Limit"
+msgstr "Limite de Documentos"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields.selection,name:rn_credit_limit_rules.selection__credit_limit_rule__type__documents
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_move__id
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__id
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner__id
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_sale_order__id
+msgid "ID"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_needaction
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_has_error
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model,name:rn_credit_limit_rules.model_account_move
+msgid "Journal Entry"
+msgstr "Asiento contable"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_account_move____last_update
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule____last_update
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner____last_update
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: code:addons/rn_credit_limit_rules/models/credit_limit_rules.py:0
+#: code:addons/rn_credit_limit_rules/models/credit_limit_rules.py:0
+#: code:addons/rn_credit_limit_rules/models/credit_limit_rules.py:0
+#: code:addons/rn_credit_limit_rules/models/credit_limit_rules.py:0
+#, python-format
+msgid "New"
+msgstr "Nuevo"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model,name:rn_credit_limit_rules.model_res_partner
+msgid "Partner Credit Limit"
+msgstr "Límite de crédito de socio"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__access_url
+msgid "Portal Access URL"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model,name:rn_credit_limit_rules.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__access_token
+msgid "Security Token"
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__active
+msgid "Set active to false to hide the rule without removing it."
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: rn_credit_limit_rules
+#: code:addons/rn_credit_limit_rules/models/account_move.py:0
+#, python-format
+msgid ""
+"The customer has a credit limit rule that is being exceeded by this "
+"document!"
+msgstr ""
+"El cliente tiene una regla de límite de crédito que está siendo excedida "
+"por este documento!"
+
+#. module: rn_credit_limit_rules
+#: code:addons/rn_credit_limit_rules/models/sale_order.py:0
+#, python-format
+msgid ""
+"The customer has a credit limit rule that is being exceeded by this sales "
+"order!"
+msgstr ""
+"El cliente tiene una regla de límite de crédito que esta orden de venta está "
+"excediendo!"
+
+#. module: rn_credit_limit_rules
+#: code:addons/rn_credit_limit_rules/models/account_move.py:0
+#: code:addons/rn_credit_limit_rules/models/sale_order.py:0
+#, python-format
+msgid ""
+"The partner has a credit limit rule based on the number of unpaid documents!"
+msgstr ""
+"El socio tiene una regla de límite de crédito basada en la cantidad de documentos no pagados!"
+
+#. module: rn_credit_limit_rules
+#: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.view_move_form
+#: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.view_order_form
+msgid "This customer has exceeded a credit limit rule.<br/>"
+msgstr "Esta cliente ha excedido una regla de límite de crédito.<br/>"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de actividad de excepción registrada"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes no leídos"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes no leídos"
+
+#. module: rn_credit_limit_rules
+#: model_terms:ir.actions.act_window,help:rn_credit_limit_rules.credit_limit_rule_tree_action
+msgid "View all Credit Limit Rules Information!"
+msgstr "Ver toda la información sobre las reglas de límite de crédito!"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_credit_limit_rule__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: rn_credit_limit_rules
+#: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
