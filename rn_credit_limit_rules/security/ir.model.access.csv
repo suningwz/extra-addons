@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_credit_limit_rule_readonly,credit.limit.rule,model_credit_limit_rule,account.group_account_readonly,1,0,0,0
 access_credit_limit_rule_manager,credit.limit.rule,model_credit_limit_rule,account.group_account_manager,1,1,1,1
 access_credit_limit_rule_invoice,credit.limit.rule,model_credit_limit_rule,account.group_account_invoice,1,0,0,0
+access_credit_limit_rule_wizard,credit.limit.rule.wizard,model_credit_limit_rule_wizard,account.group_account_manager,1,1,1,1

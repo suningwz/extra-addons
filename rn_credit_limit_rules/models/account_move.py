@@ -7,11 +7,12 @@ class AccountMove(models.Model):
     _description = 'Journal Entry'
 
     credit_limit_warning = fields.Boolean(compute='_compute_credit_limit_warning')
+    allow_credit = fields.Boolean(default=False)
 
     def _compute_credit_limit_warning(self):
         for record in self:
             credit_limit_warning = False
-            if record.partner_id:
+            if record.partner_id and not record.allow_credit:
                 rules = record.partner_id.credit_limit_rules_ids
                 if rules:
                     limite = []
@@ -33,7 +34,7 @@ class AccountMove(models.Model):
                         minimo_doc = overdue_docs[0]
                         if len(invoices) > minimo_doc:
                             credit_limit_warning = True
-                    if len(limite) > 0:
+                    if len(limite) > 0 and credit_limit_warning:
                         limite.sort()
                         limite_credito = limite[0]
                         amount_doc = self.amount_residual_signed
@@ -51,7 +52,7 @@ class AccountMove(models.Model):
             record.credit_limit_warning = credit_limit_warning
 
     def action_post(self):
-        if self.partner_id and self.move_type in ['out_invoice']:
+        if self.partner_id and self.move_type in ['out_invoice'] and not self.allow_credit:
             rules = self.partner_id.credit_limit_rules_ids
             if rules:
                 limite = []
@@ -86,3 +87,22 @@ class AccountMove(models.Model):
                     if amount_doc > limite_credito:
                         raise ValidationError(_('The customer has a credit limit rule that is being exceeded by this document!'))
         return super().action_post()
+
+    def action_get_credit_rule_summary(self):
+        compose_form = self.env.ref('rn_credit_limit_rules.credit_limit_rule_wizard_view', raise_if_not_found=False).sudo()
+        ctx = dict(
+            default_partner_id=self.partner_id.id,
+            default_account_move_id=self.id,
+        )
+
+        return {
+            'name': _('Credit Limit Summary'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'credit.limit.rule.wizard',
+            'views': [(compose_form.id, 'form')],
+            'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }

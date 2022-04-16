@@ -7,7 +7,7 @@
     'summary': """Customer Credit Limit Rules""",
     'sequence': 11,
     'website': 'https://github.com/ruiznorlan/addons-ruiznorlan',
-    'depends': ['account', 'sale', 'sale_management'],
+    'depends': ['base', 'account', 'sale', 'sale_management'],
     'license': 'LGPL-3',
     'data': [
         'security/ir.model.access.csv',
@@ -16,6 +16,7 @@
         'views/res_partner.xml',
         'views/sale_order.xml',
         'views/account_move.xml',
+        'wizard/credit_limit_summary.xml'
     ],
     'installable': True,
 }

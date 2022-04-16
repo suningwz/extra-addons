@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="credit_limit_rule_wizard_view" model="ir.ui.view">
+        <field name="name">Credit Limit Summary</field>
+        <field name="model">credit.limit.rule.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Credit Limit Summary">
+                <field name="sale_order_id" invisible="1"/>
+                <field name="account_move_id" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <group>
+                    <group>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="credit_limit" readonly="1"/>
+                        <field name="amount_available" readonly="1"/>
+                        <field name="doc_limit" readonly="1"/>
+                        <field name="doc_available" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="amount_receivable" readonly="1"/>
+                        <field name="amount_current_quotation" readonly="1"/>
+                        <field name="amount_exceeded" readonly="1"/>
+                        <field name="sale_orders" readonly="1"/>
+                        <field name="account_moves" readonly="1"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Confirm" name="action_approve_document" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!--
+    <record id="action_move_credit_limit" model="ir.actions.act_window">
+        <field name="name">Credit Limit Summary</field>
+        <field name="res_model">credit.limit.rule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="credit_limit_rule_wizard_view"/>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_manager'), ref('base.group_system')])]"/>
+
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">form</field>
+
+    </record>
+    -->
+
+</odoo>

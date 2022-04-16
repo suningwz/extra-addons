@@ -8,10 +8,10 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <field name="credit_limit_warning" invisible="1"/>
-                <div groups="account.group_account_invoice,account.group_account_readonly"
-                     class="alert alert-warning mb-0" role="alert" 
-                     attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('move_type', '!=', 'out_invoice'), ('credit_limit_warning', '=', False)]}">
-                    This customer has exceeded a credit limit rule.<br/>
+                <field name="allow_credit" invisible="1"/>
+                <div groups="account.group_account_invoice,account.group_account_readonly" class="alert alert-warning mb-0" role="alert" attrs="{'invisible': ['|', '|', ('state', '!=', 'draft'), ('move_type', '!=', 'out_invoice'), ('credit_limit_warning', '=', False)]}">
+                    This customer has exceeded a credit limit rule.
+                    <button class="btn btn-primary" groups="account.group_account_manager,base.group_system" name="action_get_credit_rule_summary" type="object" string="Summary" attrs="{'invisible': [('allow_credit', '=', True)]}"/>
                 </div>
             </xpath>
         </field>
