@@ -9,7 +9,7 @@ class PartnerCreditLimit(models.Model):
     _inherit = 'res.partner'
     _description = 'Partner Credit Limit'
 
-    credit_limit_rules_id = fields.Many2one('credit.limit.rule', string='Credit Limit Rules')
+    credit_limit_rules_id = fields.Many2one('credit.limit.rule', string='Credit Limit Rules', copy=False)
 
     @api.onchange('parent_id')
     def _onchange_parent_id_for_credit_limit(self):

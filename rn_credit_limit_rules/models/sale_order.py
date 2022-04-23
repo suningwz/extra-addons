@@ -9,7 +9,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     credit_limit_warning = fields.Boolean(compute='_compute_credit_limit_warning')
-    allow_credit = fields.Boolean(default=False)
+    allow_credit = fields.Boolean(default=False, copy=False)
 
     def _compute_credit_limit_warning(self):
         for record in self:
