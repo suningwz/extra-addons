@@ -12,80 +12,68 @@ class AccountMove(models.Model):
     def _compute_credit_limit_warning(self):
         for record in self:
             credit_limit_warning = False
-            if record.partner_id and not record.allow_credit:
-                rules = record.partner_id.credit_limit_rules_ids
-                if rules:
-                    limite = []
-                    overdue_docs = []
-                    invoices = self.env['account.move'].sudo().search([
-                        # Facturas y Notas de Crédito
-                        ('move_type', 'in', ['out_invoice', 'out_refund']),
-                        # Donde el monto adeudado sea distinto a 0
-                        ('amount_residual_signed', '<>', 0.0),
-                        # Documento esté publicado
-                        ('state', '=', 'posted')])
-                    for rule in rules:
-                        if rule.type == 'amount':
-                            limite.append(rule.credit_limit)
-                        if rule.type == 'documents':
-                            overdue_docs.append(rule.doc_limit)
-                    if len(overdue_docs) > 0:
-                        overdue_docs.sort()
-                        minimo_doc = overdue_docs[0]
-                        if len(invoices) > minimo_doc:
-                            credit_limit_warning = True
-                    if len(limite) > 0 and credit_limit_warning:
-                        limite.sort()
-                        limite_credito = limite[0]
-                        amount_doc = self.amount_residual_signed
-
-                        # Sumo el monto de las facturas
-                        for inv in invoices:
-                            amount_doc += inv.amount_residual_signed
-
-                        if amount_doc > limite_credito:
-                            credit_limit_warning = True
-                else:
-                    credit_limit_warning = False
-            else:
-                credit_limit_warning = False
-            record.credit_limit_warning = credit_limit_warning
-
-    def action_post(self):
-        if self.partner_id and self.move_type in ['out_invoice'] and not self.allow_credit:
-            rules = self.partner_id.credit_limit_rules_ids
-            if rules:
-                limite = []
-                overdue_docs = []
+            if record.partner_id and record.partner_id.credit_limit_rules_id and not record.allow_credit:
                 invoices = self.env['account.move'].sudo().search([
-                        # Facturas y Notas de Crédito
-                        ('move_type', 'in', ['out_invoice', 'out_refund']),
-                        # Donde el monto adeudado sea distinto a 0
-                        ('amount_residual_signed', '<>', 0.0),
-                        # Documento esté publicado
-                        ('state', '=', 'posted')])
-                for rule in rules:
-                    if rule.type == 'amount':
-                        limite.append(rule.credit_limit)
-                    if rule.type == 'documents':
-                        overdue_docs.append(rule.doc_limit)
-                if len(overdue_docs) > 0:
-                    overdue_docs.sort()
-                    minimo_doc = overdue_docs[0]
-                    if len(invoices) > minimo_doc:
-                        raise ValidationError(_('The partner has a credit limit rule based on the number of unpaid documents!'))
-                    return super().action_post()
-                if len(limite) > 0:
-                    limite.sort()
-                    limite_credito = limite[0]
-                    amount_doc = self.amount_residual_signed
+                    # Facturas y Notas de Crédito
+                    ('move_type', 'in', ['out_invoice', 'out_refund']),
+                    # Donde el monto adeudado sea distinto a 0
+                    ('amount_residual_signed', '<>', 0.0),
+                    # Documento esté publicado
+                    ('state', '=', 'posted')])
+
+                if record.partner_id.credit_limit_rules_id.type == 'amount':
+
+                    limite_credito = record.partner_id.credit_limit_rules_id.credit_limit
+                    amount_doc = 0.0
+                    # Convertirmos el monto a la moneda de la compañía
+                    if record.currency_id.id != record.company_id.currency_id.id:
+                        amount_doc = 1 / record.currency_rate * record.amount_total
+                    else:
+                        amount_doc = record.amount_total
 
                     # Sumo el monto de las facturas
                     for inv in invoices:
                         amount_doc += inv.amount_residual_signed
 
                     if amount_doc > limite_credito:
-                        raise ValidationError(_('The customer has a credit limit rule that is being exceeded by this document!'))
+                        credit_limit_warning = True
+                if record.partner_id.credit_limit_rules_id.type == 'documents':
+                    minimo_doc = record.partner_id.credit_limit_rules_id.doc_limit
+                    if len(invoices) > minimo_doc:
+                        credit_limit_warning = True
+            else:
+                credit_limit_warning = False
+            record.credit_limit_warning = credit_limit_warning
+
+    def action_post(self):
+        if self.partner_id and self.partner_id.credit_limit_rules_id and self.move_type in ['out_invoice'] and not self.allow_credit:
+            invoices = self.env['account.move'].sudo().search([
+                    # Facturas y Notas de Crédito
+                    ('move_type', 'in', ['out_invoice', 'out_refund']),
+                    # Donde el monto adeudado sea distinto a 0
+                    ('amount_residual_signed', '<>', 0.0),
+                    # Documento esté publicado
+                    ('state', '=', 'posted')])
+                
+            if self.partner_id.credit_limit_rules_id.type == 'amount':
+                limite_credito = self.partner_id.credit_limit_rules_id.credit_limit
+                amount_doc = 0.0
+                # Convertirmos el monto a la moneda de la compañía
+                if self.currency_id.id != self.company_id.currency_id.id:
+                    amount_doc = 1 / self.currency_rate * self.amount_residual_signed
+                else:
+                    amount_doc = self.amount_residual_signed
+
+                # Sumo el monto de las facturas
+                for inv in invoices:
+                    amount_doc += inv.amount_residual_signed
+
+                if amount_doc > limite_credito:
+                    raise ValidationError(_('The customer has a credit limit rule that is being exceeded by this sales order!'))
+            if self.partner_id.credit_limit_rules_id.type == 'documents':
+                minimo_doc = self.partner_id.credit_limit_rules_id.doc_limit
+                if len(invoices) > minimo_doc:
+                    raise ValidationError(_('The partner has a credit limit rule based on the number of unpaid documents!'))
         return super().action_post()
 
     def action_get_credit_rule_summary(self):

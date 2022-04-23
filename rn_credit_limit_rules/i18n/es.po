@@ -92,8 +92,8 @@ msgstr "Regla de límite de crédito"
 
 #. module: rn_credit_limit_rules
 #: model:ir.actions.act_window,name:rn_credit_limit_rules.credit_limit_rule_tree_action
-#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner__credit_limit_rules_ids
-#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_users__credit_limit_rules_ids
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_partner__credit_limit_rules_id
+#: model:ir.model.fields,field_description:rn_credit_limit_rules.field_res_users__credit_limit_rules_id
 #: model:ir.ui.menu,name:rn_credit_limit_rules.menu_cred_limit_rules
 #: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.credit_limit_rule_view_form
 #: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.credit_limit_rule_view_tree
