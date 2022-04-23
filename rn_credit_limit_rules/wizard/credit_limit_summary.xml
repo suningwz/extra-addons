@@ -22,7 +22,6 @@
                         <field name="amount_receivable" readonly="1"/>
                         <field name="amount_current_quotation" readonly="1"/>
                         <field name="amount_exceeded" readonly="1"/>
-                        <field name="sale_orders" readonly="1"/>
                         <field name="account_moves" readonly="1"/>
                     </group>
                 </group>

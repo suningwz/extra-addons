@@ -9,11 +9,12 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     credit_limit_warning = fields.Boolean(compute='_compute_credit_limit_warning')
+    allow_credit = fields.Boolean(default=False)
 
     def _compute_credit_limit_warning(self):
         for record in self:
             credit_limit_warning = False
-            if record.partner_id and record.partner_id.credit_limit_rules_id:
+            if record.partner_id and record.partner_id.credit_limit_rules_id and not record.allow_credit:
                 invoices = self.env['account.move'].sudo().search([
                     # Facturas y Notas de Crédito
                     ('move_type', 'in', ['out_invoice', 'out_refund']),
@@ -48,7 +49,7 @@ class SaleOrder(models.Model):
 
     def action_confirm(self):
         for record in self:
-            if record.partner_id and record.partner_id.credit_limit_rules_id:
+            if record.partner_id and record.partner_id.credit_limit_rules_id and not record.allow_credit:
 
                 invoices = self.env['account.move'].sudo().search([
                     # Facturas y Notas de Crédito
@@ -79,3 +80,27 @@ class SaleOrder(models.Model):
                         raise ValidationError(_('The partner has a credit limit rule based on the number of unpaid documents!'))
 
             return super().action_confirm()
+
+    def action_get_credit_rule_summary(self):
+        compose_form = self.env.ref('rn_credit_limit_rules.credit_limit_rule_wizard_view', raise_if_not_found=False).sudo()
+        ctx = dict(
+            default_partner_id=self.partner_id.id,
+            default_sale_order_id=self.id,
+        )
+
+        return {
+            'name': _('Credit Limit Summary'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'credit.limit.rule.wizard',
+            'views': [(compose_form.id, 'form')],
+            'view_id': compose_form.id,
+            'target': 'new',
+            'context': ctx,
+        }
+
+    def _prepare_invoice(self):
+        res = super()._prepare_invoice()
+        res['allow_credit'] = self.allow_credit
+        return res

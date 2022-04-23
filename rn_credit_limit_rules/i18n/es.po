@@ -370,7 +370,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.view_move_form
 #: model_terms:ir.ui.view,arch_db:rn_credit_limit_rules.view_order_form
 msgid "This customer has exceeded a credit limit rule.<br/>"
-msgstr "Esta cliente ha excedido una regla de límite de crédito.<br/>"
+msgstr "Este cliente ha excedido una regla de límite de crédito.<br/>"
 
 #. module: rn_credit_limit_rules
 #: model:ir.model.fields,help:rn_credit_limit_rules.field_credit_limit_rule__activity_exception_decoration
