@@ -6,7 +6,7 @@
     'description': """Manage Customer Credit Limit Rules""",
     'summary': """Customer Credit Limit Rules""",
     'sequence': 11,
-    'website': 'https://github.com/ruiznorlan/addons-ruiznorlan',
+    'website': 'https://github.com/ruiznorlan/extra-addons',
     'depends': ['base', 'account', 'sale', 'sale_management'],
     'license': 'LGPL-3',
     'data': [

@@ -1,0 +1,163 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rn_crm_stage_steps
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220401\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-23 22:27+0000\n"
+"PO-Revision-Date: 2022-04-23 22:27+0000\n"
+"Last-Translator: Norlan Ruiz<ruiznorlan@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__lead_id
+msgid "CRM Lead"
+msgstr "Oportunidad CRM"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead__html_progress_lead
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage__html_stage_description
+msgid "CRM Lead Summary"
+msgstr "Resumen de Oportunidad CRM"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__stage_id
+msgid "CRM Stage"
+msgstr "Etapa CRM"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model,name:rn_crm_stage_steps.model_crm_stage
+msgid "CRM Stages"
+msgstr "Etapas del CRM"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__create_uid
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__create_date
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields.selection,name:rn_crm_stage_steps.selection__crm_lead_line__task_state__done
+msgid "DONE"
+msgstr "HECHO"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__description
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__display_name
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage__display_name
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead__id
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__id
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage__id
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__id
+msgid "ID"
+msgstr ""
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line____last_update
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage____last_update
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__write_uid
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__write_date
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model,name:rn_crm_stage_steps.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidad"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__name
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields.selection,name:rn_crm_stage_steps.selection__crm_lead_line__task_state__process
+msgid "PROCESS"
+msgstr "EN PROCESO"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead__progress_calc
+msgid "Progress"
+msgstr "En Progreso"
+
+#. module: rn_crm_stage_steps
+#: model_terms:ir.ui.view,arch_db:rn_crm_stage_steps.crm_lead_view_form_inherit
+msgid "RESET TODO"
+msgstr "RESTABLECER POR HACER"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__ready
+msgid "Ready"
+msgstr "Listo"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__sequence
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage_line__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__stage_id
+msgid "Stage"
+msgstr "Etapa"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields.selection,name:rn_crm_stage_steps.selection__crm_lead_line__task_state__todo
+msgid "TODO"
+msgstr "POR HACER"
+
+#. module: rn_crm_stage_steps
+#: model_terms:ir.ui.view,arch_db:rn_crm_stage_steps.crm_stage_form_inherit
+msgid "TODO Description"
+msgstr "Descripción Por Hacer"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model,name:rn_crm_stage_steps.model_crm_lead_line
+#: model:ir.model,name:rn_crm_stage_steps.model_crm_stage_line
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead__todo_ids
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_stage__todo_ids
+#: model_terms:ir.ui.view,arch_db:rn_crm_stage_steps.crm_lead_view_form_inherit
+#: model_terms:ir.ui.view,arch_db:rn_crm_stage_steps.crm_stage_form_inherit
+msgid "TODO List"
+msgstr "Lista Por Hacer"
+
+#. module: rn_crm_stage_steps
+#: model:ir.model.fields,field_description:rn_crm_stage_steps.field_crm_lead_line__task_state
+msgid "Task State"
+msgstr "Estado de la tarea"

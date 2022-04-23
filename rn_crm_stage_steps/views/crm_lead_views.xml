@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="crm_lead_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <div class="card">
+                    <div class="card-body">
+                        <field name="html_progress_lead" nolabel="1"/>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_get_todo_list" string="RESET TODO" type="object" class="oe_highlight" title="RESET TODO" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+            </xpath>
+            <xpath expr="//page[@name='internal_notes']" position="after">
+                <page name="todo_page" string="TODO List" attrs="{'invisible': [('type', '=', 'lead')]}">
+                    <field string="TODO List" name="todo_ids" widget="one2many">
+                        <tree string="TODO List" editable="bottom" limit="25">
+                            <field name="sequence" invisible="1"/>
+                            <field name="lead_id" invisible="1"/>
+                            <field name="stage_id" invisible="1"/>
+                            <field name="name" readonly="1"/>
+                            <field name="description" readonly="1"/>
+                            <field name="ready" invisible="1"/>
+                            <field name="task_state" decoration-warning="task_state == 'todo'" decoration-info="task_state == 'progress'" decoration-success="task_state == 'done'"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="crm_case_kanban_view_leads_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.kanban.lead.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_record_bottom')]" position="after">
+                <field name="progress_calc" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
