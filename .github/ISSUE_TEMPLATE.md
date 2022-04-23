@@ -12,4 +12,4 @@
 
 ###### Video/Screenshot link (optional):
 
-[Link or URL](https://github.com/ruiznorlan/addons-ruiznorlan)
+[Link or URL](https://github.com/ruiznorlan/extra-addons)
