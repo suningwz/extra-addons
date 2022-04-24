@@ -1,5 +1,5 @@
 {
-    'name': 'Odoo 14 - Credit Limit Rules',
+    'name': 'Credit Limit Rules',
     'author': 'Norlan Ruiz',
     'category': 'Accounting/Accounting',
     'version': '14.0.1.0.0',
