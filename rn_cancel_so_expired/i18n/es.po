@@ -1,0 +1,49 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* rn_cancel_so_expired
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0-20220401\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-24 00:36+0000\n"
+"PO-Revision-Date: 2022-04-24 00:36+0000\n"
+"Last-Translator: Norlan Ruiz<ruiznorlan@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: rn_cancel_so_expired
+#: model:ir.model.fields,field_description:rn_cancel_so_expired.field_sale_order__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: rn_cancel_so_expired
+#: model:ir.model.fields,field_description:rn_cancel_so_expired.field_sale_order__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: rn_cancel_so_expired
+#: model:ir.model.fields,field_description:rn_cancel_so_expired.field_sale_order____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: rn_cancel_so_expired
+#: model:ir.actions.server,name:rn_cancel_so_expired.ir_cron_cancel_so_expired_ir_actions_server
+#: model:ir.cron,cron_name:rn_cancel_so_expired.ir_cron_cancel_so_expired
+#: model:ir.cron,name:rn_cancel_so_expired.ir_cron_cancel_so_expired
+msgid "Sale Order: Cancel S.O. Expired"
+msgstr "Ventas: Cancelar Ordenes de Venta Expiradas"
+
+#. module: rn_cancel_so_expired
+#: model:ir.model,name:rn_cancel_so_expired.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: rn_cancel_so_expired
+#: code:addons/rn_cancel_so_expired/models/sale_order.py:0
+#, python-format
+msgid "The sale order was canceled because the expiration date passed"
+msgstr "La orden de venta fue cancelada porque pasó la fecha de vencimiento"
