@@ -3,7 +3,7 @@
    :alt: License: LGPL-3
 
 ==================================
-Odoo 14 - CRM Stage Steps
+CRM Stage Steps
 ==================================
 
 .. image:: static/description/icon.png

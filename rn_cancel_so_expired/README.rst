@@ -3,7 +3,7 @@
    :alt: License: LGPL-3
 
 ==================================
-Credit Limit Rules
+Cancel Sale Order Expired
 ==================================
 
 .. image:: static/description/icon.png
@@ -11,4 +11,4 @@ Credit Limit Rules
   :alt: Module Icon
   :align: right
 
-Module for Odoo that implements a credit limit control, based on rules of credit amount or number of expired documents
+Module for Odoo that implements the possibility of canceling sales orders that exceed the expiration date
