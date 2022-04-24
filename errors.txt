@@ -1,0 +1,17 @@
+INFO:__main__:Use custom file \extra-addons\.eslintrc.json
+INFO:__main__:Use custom file \extra-addons\.flake8
+INFO:__main__:Use custom file \extra-addons\.pre-commit-config-optional.yaml
+INFO:__main__:Use custom file \extra-addons\.pre-commit-config.yaml
+INFO:__main__:Use custom file \extra-addons\.pylintrc
+INFO:__main__:Use custom file \extra-addons\.pylintrc-optional
+INFO:__main__:Installing pre-commit hooks
+INFO:__main__:************************* MANDATORY CHECKS *************************
+INFO:__main__:Running mandatory checks (affect status build)
+flake8 mandatory checks..................................................Passed
+pylint mandatory checks..................................................Passed
+javascript optional checks...........................(no files to check)Skipped
+INFO:__main__:****************************************************************************************************
+INFO:__main__:~~~~~~~~~~~~~~~~~~~~~~~~~ OPTIONAL CHECKS ~~~~~~~~~~~~~~~~~~~~~~~~~
+INFO:__main__:Running optional checks (does not affect status build)
+pylint optional checks...................................................Passed
+INFO:__main__:~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

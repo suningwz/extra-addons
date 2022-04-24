@@ -1,8 +1,6 @@
 from odoo import models, _
 
 from datetime import date
-import logging
-_logger = logging.getLogger(__name__)
 
 
 class SaleOrder(models.Model):
@@ -12,7 +10,7 @@ class SaleOrder(models.Model):
         now = date.today()
         sale_orders = self.env['sale.order'].sudo().search([('state', 'in', ('draft', 'sent', 'sale')),
                                                             ('validity_date', '<', now)])
-        _logger.info(sale_orders)
+
         for order in sale_orders:
 
             order.state = 'cancel'

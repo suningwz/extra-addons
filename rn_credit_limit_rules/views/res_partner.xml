@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <odoo>
-    
-    <record id="view_partner_property_form_inherit" 
-        model="ir.ui.view">
+    <record id="view_partner_property_form_inherit" model="ir.ui.view">
         <field name="name">res.partner.property.form.inherit</field>
         <field name="model">res.partner</field>
         <field name="type">form</field>
@@ -14,5 +11,5 @@
             </field>
         </field>
     </record>
-    
+
 </odoo>

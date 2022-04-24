@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from cgitb import html
-import logging
-
-from odoo import api, fields, models, tools, SUPERUSER_ID
-
-_logger = logging.getLogger(__name__)
+from odoo import api, fields, models
 
 
 class Lead(models.Model):
@@ -22,20 +17,22 @@ class Lead(models.Model):
                         complete += 1
                     else:
                         not_complete += 1
-                
+
                 total = complete + not_complete
                 percent_ready = round(complete / total * 100, 2)
                 html_string = ""
                 html_string += '<div class="card">'
                 html_string += '<div class="card-body">'
-                
+
                 html_string += f'<h1 class="card-title">STAGE: {record.stage_id.name}</h1>'
                 html_string += f'<p class="card-text">{record.stage_id.html_stage_description}</p>'
-                
+
                 html_string += '<br/>'
-    
+
                 html_string += '<div class="progress">'
-                html_string += f'<div class="progress-bar" role="progressbar" style="width: {percent_ready}%;" aria-valuenow="{percent_ready}" aria-valuemin="0" aria-valuemax="100">{percent_ready}%</div>'
+                html_string += f'<div class="progress-bar" role="progressbar" style="width: {percent_ready}%;'
+                html_string += f'aria-valuenow="{percent_ready}" aria-valuemin="0" '
+                html_string += f'aria-valuemax="100">{percent_ready}%</div>'
                 html_string += '</div>'
 
                 html_string += '</div>'
@@ -45,14 +42,14 @@ class Lead(models.Model):
                 html_string = ""
                 html_string += '<div class="card">'
                 html_string += '<div class="card-body">'
-                
+
                 html_string += f'<h1 class="card-title">STAGE: {record.stage_id.name}</h1>'
-                html_string += f'<p class="card-text">{record.stage_id.html_stage_description}</p>'
-                
+
                 html_string += '<br/>'
-    
+
                 html_string += '<div class="progress">'
-                html_string += f'<div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>'
+                html_string += '<div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" '
+                html_string += 'aria-valuemin="0" aria-valuemax="100">0%</div>'
                 html_string += '</div>'
 
                 html_string += '</div>'
@@ -78,7 +75,6 @@ class Lead(models.Model):
     progress_calc = fields.Float(string="Progress", compute=_compute_progress)
 
     todo_ids = fields.One2many('crm.lead.line', 'lead_id', string='TODO List')
-
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -134,12 +130,13 @@ class Lead(models.Model):
                     body += f'<td>{todo.description}</td>'
                     body += f'<td>{todo.task_state}</td>'
                     body += '</tr>'
-                
+
                 body += '</tbody>'
                 body += '</table>'
                 record.message_post(body=body)
                 record.sudo().write({'todo_ids': False})
             record.sudo().write({'todo_ids': todo_list})
+
 
 class LeadTodo(models.Model):
     _name = "crm.lead.line"
@@ -151,7 +148,7 @@ class LeadTodo(models.Model):
     stage_id = fields.Many2one('crm.stage', string='Stage')
     name = fields.Char(required=True)
     description = fields.Char(required=True)
-    ready = fields.Boolean('Ready', default=False)
+    ready = fields.Boolean(default=False)
     task_state = fields.Selection([('todo', 'TODO'),
                                    ('process', 'PROCESS'),
                                    ('done', 'DONE')], default='todo')
@@ -162,4 +159,3 @@ class LeadTodo(models.Model):
             self.ready = True
         else:
             self.ready = False
-

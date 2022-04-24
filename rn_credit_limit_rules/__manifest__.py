@@ -3,7 +3,6 @@
     'author': 'Norlan Ruiz',
     'category': 'Accounting/Accounting',
     'version': '15.0.1.0.0',
-    'description': """Manage Customer Credit Limit Rules""",
     'summary': """Customer Credit Limit Rules""",
     'sequence': 11,
     'website': 'https://github.com/ruiznorlan/extra-addons',

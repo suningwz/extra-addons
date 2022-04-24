@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     "name": "CRM Stage Steps",
     "summary": "CRM Stage Steps",
