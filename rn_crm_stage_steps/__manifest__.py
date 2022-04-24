@@ -2,7 +2,7 @@
 {
     "name": "CRM Stage Steps",
     "summary": "CRM Stage Steps",
-    "version": "14.0.1.0.1",
+    "version": "15.0.1.0.1",
     'author': "Norlan Ruiz",
     'website': 'https://github.com/ruiznorlan/extra-addons',
     'license': "LGPL-3",
