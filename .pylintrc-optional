@@ -11,7 +11,10 @@ license_allowed=AGPL-3,GPL-2,GPL-2 or any later version,
     GPL-3,GPL-3 or any later version,LGPL-3,
     Other OSI approved licence,Other proprietary,
     OEEL-1, OPL-1,
-manifest_required_authors=Norlan Ruiz
+manifest_required_authors=Vauxoo,
+  Norlan Ruiz,
+  Odoo Community Association (OCA),
+  Jarsa Sistemas,
 manifest_required_keys=license
 manifest_deprecated_keys=description,active
 
