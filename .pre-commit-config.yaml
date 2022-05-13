@@ -33,11 +33,6 @@ repos:
     hooks:
       - id: flake8
         name: flake8 mandatory checks
-  - repo: https://github.com/vauxoo/pylint-odoo
-    rev: vx-5.0.5
-    hooks:
-      - id: pylint
-        name: pylint mandatory checks
   - repo: https://github.com/pre-commit/mirrors-eslint
     rev: v7.32.0
     hooks:

@@ -50,7 +50,7 @@ class Shell(object):
             try:
                 return getattr(cls, shell)(local_vars)
             except ImportError:
-                pass
+                continue
             except Exception:
                 _logger.error("Could not start '%s' shell.", shell)
                 _logger.debug("Shell error:", exc_info=True)

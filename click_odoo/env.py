@@ -10,15 +10,20 @@ _logger = logging.getLogger(__name__)
 
 
 @contextmanager
-def OdooEnvironment(database, rollback=False, **kwargs):
+def Odoo_Environment(database, rollback=False, **kwargs):
     with environment_manage():
         registry = odoo.registry(database)
         try:
             with registry.cursor() as cr:
                 uid = odoo.SUPERUSER_ID
+
                 try:
                     ctx = Environment(cr, uid, {})["res.users"].context_get()
+                    env = Environment(cr, uid, ctx)
+                    yield env
+                    # cr.commit()
                 except Exception as e:
+                    cr.rollback()
                     ctx = {"lang": "en_US"}
                     # this happens, for instance, when there are new
                     # fields declared on res_partner which are not yet
@@ -28,13 +33,6 @@ def OdooEnvironment(database, rollback=False, **kwargs):
                         "anyway with a default context. Error was: %s",
                         e,
                     )
-                env = Environment(cr, uid, ctx)
-                cr.rollback()
-                yield env
-                if rollback:
-                    cr.rollback()
-                else:
-                    cr.commit()
         finally:
             if odoo_version_info < (10, 0):
                 odoo.modules.registry.RegistryManager.delete(database)

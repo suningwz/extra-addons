@@ -16,7 +16,7 @@ import pytest
 from click.testing import CliRunner
 
 import click_odoo
-from click_odoo import OdooEnvironment, console, odoo, odoo_bin
+from click_odoo import Odoo_Environment, console, odoo, odoo_bin
 from click_odoo.cli import main
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -52,7 +52,7 @@ def odoo_db():
 
 
 def test_odoo_env(odoodb):
-    with OdooEnvironment(database=odoodb) as env:
+    with Odoo_Environment(database=odoodb) as env:
         admin = env["res.users"].search([("login", "=", "admin")])
         assert len(admin) == 1
 
@@ -407,7 +407,7 @@ def test_write_raise(tmpdir, capfd, odoodb):
 def test_env_cache(odoodb):
     """ test a new environment does not reuse cache """
     _cleanup_testparam(odoodb)
-    with OdooEnvironment(database=odoodb) as env:
+    with Odoo_Environment(database=odoodb) as env:
         env["ir.config_parameter"].set_param("testparam", "testvalue")
         value = env["ir.config_parameter"].get_param("testparam")
         assert value == "testvalue"
@@ -415,7 +415,7 @@ def test_env_cache(odoodb):
     _assert_testparam_present(odoodb, "testvalue")
     _cleanup_testparam(odoodb)
     _assert_testparam_absent(odoodb)
-    with OdooEnvironment(database=odoodb) as env:
+    with Odoo_Environment(database=odoodb) as env:
         value = env["ir.config_parameter"].get_param("testparam")
         assert not value
 

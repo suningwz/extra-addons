@@ -3,5 +3,5 @@
 
 from .compat import odoo  # noqa
 from .compat import odoo_bin  # noqa
-from .env import OdooEnvironment  # noqa
+from .env import odoo_environment  # noqa
 from .env_options import env_options  # noqa

@@ -9,12 +9,12 @@ import click
 from click.decorators import _param_memo  # XXX undocumented click internal
 
 from .compat import environment_manage, odoo_version_info
-from .env import OdooEnvironment, odoo
+from .env import odoo_environment, odoo
 
 _logger = logging.getLogger(__name__)
 
 
-class env_options(object):
+class EnvOptions(object):
     def __init__(
         self,
         default_log_level="info",
@@ -23,7 +23,7 @@ class env_options(object):
         database_required=True,
         database_must_exist=True,
         with_addons_path=False,
-        environment_manager=OdooEnvironment,
+        environment_manager=odoo_environment,
     ):
         self.default_log_level = default_log_level
         self.with_rollback = with_rollback
@@ -192,7 +192,7 @@ class env_options(object):
                 # database is provided in the odoo config file, use it
                 database = odoo.tools.config["db_name"]
             rollback = ctx.params.get("rollback")
-            # pop env_options params so they are not passed to the command
+            # pop EnvOptions params so they are not passed to the command
             self._pop_params(ctx)
             if self.with_database and self.database_required and not database:
                 raise click.UsageError(
