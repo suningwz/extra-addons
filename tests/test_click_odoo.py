@@ -3,6 +3,8 @@
 
 from __future__ import print_function
 
+import logging
+
 import os
 import subprocess
 import sys
@@ -24,6 +26,8 @@ here = os.path.abspath(os.path.dirname(__file__))
 # mechanism. Logging is therefore tested with subprocesses.
 odoo.netsvc._logger_init = True
 
+_logger = logging.getLogger(__name__)
+
 
 def _init_odoo_db(dbname):
     subprocess.check_call(["createdb", dbname])
@@ -35,7 +39,7 @@ def _drop_db(dbname):
 
 
 @pytest.fixture(scope="session")
-def odoodb():
+def odoo_db():
     if "CLICK_ODOO_TEST_DB" in os.environ:
         yield os.environ["CLICK_ODOO_TEST_DB"]
     else:
@@ -93,11 +97,9 @@ def test_click_odoo_args(odoodb):
     result = subprocess.check_output(cmd, universal_newlines=True)
     assert result == textwrap.dedent(
         """\
-        sys.argv = {} a -b -d
+        sys.argv = %s a -b -d
         __name__ = __main__
-    """.format(
-            script
-        )
+    """ % script
     )
 
 
@@ -116,12 +118,9 @@ def test_click_odoo_shebang_args(odoodb):
     result = subprocess.check_output(cmd, universal_newlines=True)
     assert result == textwrap.dedent(
         """\
-        sys.argv = {} a -b -d
+        sys.argv = %s a -b -d
         __name__ = __main__
-    """.format(
-            script
-        )
-    )
+    """ % script)
 
 
 def test_interactive_no_script(mocker, odoodb):
@@ -175,7 +174,7 @@ def test_env_options_withdb(odoodb, tmpdir):
     @click_odoo.env_options()
     def testcmd(env):
         login = env["res.users"].search([("login", "=", "admin")]).login
-        click.echo("login={}".format(login))
+        click.echo("login=%s" % login)
 
     # database from command line
     runner = CliRunner()
@@ -188,11 +187,8 @@ def test_env_options_withdb(odoodb, tmpdir):
         textwrap.dedent(
             """\
         [options]
-        db_name={}
-    """.format(
-                odoodb
-            )
-        )
+        db_name=%s
+    """ % odoodb)
     )
     result = runner.invoke(testcmd, ["-c", str(odoocfg1)])
     assert result.exit_code == 0
@@ -216,10 +212,8 @@ def test_env_options_withdb(odoodb, tmpdir):
         textwrap.dedent(
             """\
         [options]
-        db_name={},notadb
-    """.format(
-                odoodb
-            )
+        db_name=%s,notadb
+    """ % odoodb
         )
     )
     result = runner.invoke(testcmd, ["-c", str(odoocfg3)])
@@ -254,10 +248,8 @@ def test_env_options_nodb(odoodb, tmpdir):
         textwrap.dedent(
             """\
         [options]
-        db_name={}
-    """.format(
-                odoodb
-            )
+        db_name=%s
+    """ % odoodb
         )
     )
     result = runner.invoke(testcmd, ["-c", str(odoocfg1)])
@@ -269,9 +261,9 @@ def test_env_options_optionaldb(odoodb, tmpdir):
     @click_odoo.env_options(database_required=False)
     def testcmd(env):
         if env:
-            print("with env")
+            _logger.info("with env")
         else:
-            print("without env")
+            _logger.info("without env")
 
     # no database
     runner = CliRunner()
@@ -289,10 +281,8 @@ def test_env_options_optionaldb(odoodb, tmpdir):
         textwrap.dedent(
             """\
         [options]
-        db_name={}
-    """.format(
-                odoodb
-            )
+        db_name=%s
+    """ % odoodb
         )
     )
     result = runner.invoke(testcmd, ["-c", str(odoocfg1)])
@@ -305,9 +295,9 @@ def test_env_options_database_must_exist(odoodb):
     @click_odoo.env_options(database_must_exist=False)
     def testcmd(env):
         if env:
-            print("with env")
+            _logger.info("with env")
         else:
-            print("without env")
+            _logger.info("without env")
 
     # no database, must not exist, no env
     runner = CliRunner()
@@ -334,9 +324,9 @@ def _assert_testparam_present(dbname, expected):
     with psycopg2.connect(dbname=dbname) as conn:
         with conn.cursor() as cr:
             cr.execute("SELECT value FROM ir_config_parameter " "WHERE key='testparam'")
-            r = cr.fetchall()
-            assert len(r) == 1
-            assert r[0][0] == expected
+            answer = cr.fetchall()
+            assert len(answer) == 1
+            assert answer[0][0] == expected
     conn.close()
 
 
@@ -344,8 +334,8 @@ def _assert_testparam_absent(dbname):
     with psycopg2.connect(dbname=dbname) as conn:
         with conn.cursor() as cr:
             cr.execute("SELECT value FROM ir_config_parameter " "WHERE key='testparam'")
-            r = cr.fetchall()
-            assert len(r) == 0
+            answer = cr.fetchall()
+            assert len(answer) == 0
     conn.close()
 
 
@@ -404,11 +394,12 @@ def test_write_raise(tmpdir, capfd, odoodb):
     script = os.path.join(here, "scripts", "script4.py")
     logfile = tmpdir.join("mylogfile")
     cmd = ["click-odoo", "-d", odoodb, "--logfile", str(logfile), "--", script, "raise"]
-    r = subprocess.call(cmd)
-    assert r != 0
+    answer = subprocess.call(cmd)
+    assert answer != 0
     logcontent = logfile.read()
     assert "testerror" in logcontent
     out, err = capfd.readouterr()
+    _logger.info(out)
     assert "testerror" in err
     _assert_testparam_absent(odoodb)
 
@@ -433,8 +424,8 @@ def test_env_options_addons_path():
     script = os.path.join(here, "scripts", "script5.py")
 
     cmd = ["click-odoo", "--", script]
-    r = subprocess.call(cmd)
-    assert r != 0  # addon1 not found in addons path
+    answer = subprocess.call(cmd)
+    assert answer != 0  # addon1 not found in addons path
 
     addons_path = ",".join(
         [
@@ -444,8 +435,8 @@ def test_env_options_addons_path():
     )
 
     cmd = ["click-odoo", "--addons-path", addons_path, "--", script]
-    r = subprocess.call(cmd)
-    assert r == 0
+    answer = subprocess.call(cmd)
+    assert answer == 0
 
 
 def test_parse_version():
